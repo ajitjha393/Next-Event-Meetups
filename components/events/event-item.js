@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+import classes from './event-item.module.css'
+
 function EventItem(props) {
 	const { title, image, date, location, id } = props
 
@@ -12,7 +14,7 @@ function EventItem(props) {
 	const formattedAddress = location.replace(', ', '\n')
 
 	return (
-		<li>
+		<li className={classes.item}>
 			<img src={'/' + image} alt="" />
 			<div>
 				<div>
