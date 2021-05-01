@@ -1,4 +1,8 @@
+import Button from '../ui/button'
+
 function EventsSearch(props) {
+	const formSubmitHandler = () => {}
+
 	return (
 		<form>
 			<div>
@@ -28,6 +32,7 @@ function EventsSearch(props) {
 					</select>
 				</div>
 			</div>
+			<Button onClick={formSubmitHandler}>Find Events</Button>
 		</form>
 	)
 }
