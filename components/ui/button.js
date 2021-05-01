@@ -2,7 +2,7 @@ import Link from 'next/link'
 import classes from './button.module.css'
 
 function Button(props) {
-	const { children, link, onClickHandler } = props
+	const { children, link } = props
 
 	if (link) {
 		return (
@@ -11,11 +11,7 @@ function Button(props) {
 			</Link>
 		)
 	}
-	return (
-		<button className={classes.btn} onClick={onClickHandler}>
-			{children}
-		</button>
-	)
+	return <button className={classes.btn}>{children}</button>
 }
 
 export default Button
