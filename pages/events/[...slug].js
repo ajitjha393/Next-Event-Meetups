@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { getFilteredEvents } from '../../dummy-data'
+import EventList from '../../components/events/event-list'
 
 function FilteredEventsPage() {
 	const router = useRouter()
@@ -34,7 +35,7 @@ function FilteredEventsPage() {
 
 	return (
 		<div>
-			<h1>Filtered Events Page!</h1>
+			<EventList events={filteredEvents} />
 		</div>
 	)
 }
