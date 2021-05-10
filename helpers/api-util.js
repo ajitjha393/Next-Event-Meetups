@@ -19,3 +19,7 @@ export const fetchAllEventsFromAPI = async () => {
 export const getFeaturedEvents = async () => {
 	return (await fetchAllEventsFromAPI()).filter(event => event.isFeatured)
 }
+
+export const getEventById = async id => {
+	return (await fetchAllEventsFromAPI()).find(event => event.id === id)
+}
