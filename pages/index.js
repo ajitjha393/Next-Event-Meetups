@@ -23,15 +23,7 @@ function HomePage({ featuredEvents }) {
 }
 
 export async function getStaticProps() {
-	const allEvents = []
-	const { data: resData } = await fetchAllEventsFromAPI()
-
-	for (const keys in resData) {
-		allEvents.push({
-			id: keys,
-			...resData[keys],
-		})
-	}
+	const allEvents = await fetchAllEventsFromAPI()
 
 	return {
 		props: {
