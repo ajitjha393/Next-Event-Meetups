@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import EventList from '../components/events/event-list'
 import EventsSearch from '../components/events/events-search'
 
-import { fetchAllEventsFromAPI } from '../helpers/api-util'
+import { getFeaturedEvents } from '../helpers/api-util'
 
 function HomePage({ featuredEvents }) {
 	const router = useRouter()
@@ -23,11 +23,9 @@ function HomePage({ featuredEvents }) {
 }
 
 export async function getStaticProps() {
-	const allEvents = await fetchAllEventsFromAPI()
-
 	return {
 		props: {
-			featuredEvents: allEvents.filter(event => event.isFeatured),
+			featuredEvents: await getFeaturedEvents(),
 		},
 	}
 }

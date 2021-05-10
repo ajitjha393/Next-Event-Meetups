@@ -15,3 +15,7 @@ export const fetchAllEventsFromAPI = async () => {
 
 	return allEvents
 }
+
+export const getFeaturedEvents = async () => {
+	return (await fetchAllEventsFromAPI()).filter(event => event.isFeatured)
+}
