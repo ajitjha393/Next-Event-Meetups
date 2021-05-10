@@ -23,3 +23,11 @@ export const getFeaturedEvents = async () => {
 export const getEventById = async id => {
 	return (await fetchAllEventsFromAPI()).find(event => event.id === id)
 }
+
+export const getAllEventPaths = async () => {
+	return (await fetchAllEventsFromAPI()).map(event => ({
+		params: {
+			eventId: event.id,
+		},
+	}))
+}
