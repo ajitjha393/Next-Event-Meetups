@@ -1,9 +1,9 @@
 import { Fragment } from 'react'
 import { useRouter } from 'next/router'
-import { getFeaturedEvents } from '../dummy-data'
 import EventList from '../components/events/event-list'
 import EventsSearch from '../components/events/events-search'
-import axios from 'axios'
+
+import { fetchAllEventsFromAPI } from '../helpers/api-util'
 
 function HomePage({ featuredEvents }) {
 	const router = useRouter()
@@ -24,9 +24,7 @@ function HomePage({ featuredEvents }) {
 
 export async function getStaticProps() {
 	const allEvents = []
-	const { data: resData } = await axios.get(
-		'https://react-meetup-events-default-rtdb.firebaseio.com/events.json'
-	)
+	const { data: resData } = await fetchAllEventsFromAPI()
 
 	for (const keys in resData) {
 		allEvents.push({
