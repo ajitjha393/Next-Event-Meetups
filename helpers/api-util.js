@@ -31,3 +31,11 @@ export const getAllEventPaths = async () => {
 		},
 	}))
 }
+
+export const getFeaturedEventPaths = async () => {
+	return (await getFeaturedEvents()).map(event => ({
+		params: {
+			eventId: event.id,
+		},
+	}))
+}
