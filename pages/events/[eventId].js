@@ -49,6 +49,6 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
 	return {
 		paths: await getFeaturedEventPaths(),
-		fallback: false,
+		fallback: true,
 	}
 }
