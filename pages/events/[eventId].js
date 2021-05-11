@@ -42,6 +42,7 @@ export async function getStaticProps(context) {
 		props: {
 			selectedEvent: await getEventById(params.eventId),
 		},
+		revalidate: 30,
 	}
 }
 
