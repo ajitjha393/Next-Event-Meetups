@@ -3,10 +3,9 @@ import EventList from '../../components/events/event-list'
 import EventsSearch from '../../components/events/events-search'
 import { Fragment } from 'react'
 import { useRouter } from 'next/router'
+import { fetchAllEventsFromAPI } from '../../helpers/api-util'
 
-function AllEventsPage() {
-	const events = getAllEvents()
-
+function AllEventsPage({ events }) {
 	const router = useRouter()
 
 	const findEventsHandler = (year, month) => {
@@ -27,6 +26,9 @@ export default AllEventsPage
 
 export async function getStaticProps() {
 	return {
-		props: {},
+		props: {
+			events: await fetchAllEventsFromAPI(),
+		},
+		revalidate: 60,
 	}
 }
