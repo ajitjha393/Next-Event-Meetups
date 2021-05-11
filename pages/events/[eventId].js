@@ -4,7 +4,7 @@ import EventLogistics from '../../components/event-detail/event-logistics'
 
 import ErrorAlert from '../../components/ui/error-alert'
 
-import { getEventById, getAllEventPaths } from '../../helpers/api-util'
+import { getEventById, getFeaturedEventPaths } from '../../helpers/api-util'
 
 function EventDetailPage({ selectedEvent }) {
 	if (!selectedEvent) {
@@ -48,7 +48,7 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
 	return {
-		paths: await getAllEventPaths(),
+		paths: await getFeaturedEventPaths(),
 		fallback: false,
 	}
 }
