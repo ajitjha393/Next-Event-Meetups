@@ -10,7 +10,7 @@ function EventDetailPage({ selectedEvent }) {
 	if (!selectedEvent) {
 		return (
 			<ErrorAlert>
-				<p>No Event Found</p>
+				<h2>No Event Found!</h2>
 			</ErrorAlert>
 		)
 	}
@@ -40,7 +40,7 @@ export async function getStaticProps(context) {
 
 	return {
 		props: {
-			selectedEvent: await getEventById(params.eventId),
+			selectedEvent: (await getEventById(params.eventId)) || null,
 		},
 		revalidate: 30,
 	}
@@ -49,6 +49,6 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
 	return {
 		paths: await getFeaturedEventPaths(),
-		fallback: true,
+		fallback: 'blocking', // I prefer blocking but it'll take time
 	}
 }
