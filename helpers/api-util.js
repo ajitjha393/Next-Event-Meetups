@@ -39,3 +39,16 @@ export const getFeaturedEventPaths = async () => {
 		},
 	}))
 }
+
+export const getFilteredEvents = async dateFilter => {
+	const { year, month } = dateFilter
+
+	let filteredEvents = (await fetchAllEventsFromAPI()).filter(event => {
+		const eventDate = new Date(event.date)
+		return (
+			eventDate.getFullYear() === year && eventDate.getMonth() === month - 1
+		)
+	})
+
+	return filteredEvents
+}
