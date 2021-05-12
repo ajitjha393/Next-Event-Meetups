@@ -7,7 +7,7 @@ import ErrorAlert from '../../components/ui/error-alert'
 import useSWR from 'swr'
 import { useRouter } from 'next/router'
 
-function FilteredEventsPage({ hasError, filteredEvents, dateParams }) {
+function FilteredEventsPage() {
 	const [loadedEvents, setLoadedEvents] = useState(null)
 	const { query } = useRouter()
 	const filterData = query.slug
